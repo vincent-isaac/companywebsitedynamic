@@ -156,6 +156,38 @@ Publish the website in the given URL.
 
     {% endblock  %}
 ```
+### admin.py
+```
+from django.contrib import admin
+from .models import Product,ProductAdmin
+from .models import People,PeopleAdmin
+# Register your models here.
+admin.site.register(Product,ProductAdmin)
+
+admin.site.register(People,PeopleAdmin)
+```
+### models.py
+```
+from django.db import models
+from django.contrib import admin
+
+# Create your models here.
+class Product(models.Model):
+    Itemname = models.CharField(max_length=100)
+    Price = models.IntegerField()
+    photo = models.ImageField(upload_to='photos/')
+class ProductAdmin(admin.ModelAdmin):
+    list_display = ('Itemname','Price','photo')
+
+class People(models.Model):
+    Membername = models.CharField(max_length=100)
+    Designation = models.CharField(max_length=500)
+    photo = models.ImageField(upload_to='photos/')
+
+class PeopleAdmin(admin.ModelAdmin) :
+    list_display = ('Membername','Designation', 'photo')
+```
+
 ## OUTPUT:
 ![output](./static/img/home.png)
 
@@ -167,6 +199,20 @@ Publish the website in the given URL.
 
 ![output](./static/img/contact.png)
 
+### ADMIN PAGE:
+
+![output](./static/img/admin1.png)
+
+![output](./static/img/admin2.png)
+
+## CODE VALIDAOR:
+![output](./static/img/v1.png)
+
+![output](./static/img/v2.png)
+
+![output](./static/img/v3.png)
+
+![output](./static/img/v4.png)
 
 ## RESULT:
 Thus a website is designed for the manufacturing company and is hosted in the URL http://vincent.student.saveetha.in:8000/.
